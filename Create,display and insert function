@@ -34,20 +34,78 @@ return list;
 
 void disp(struct node *list)
 {
-struct node *temp;
-for(temp=list;temp!=NULL;temp=temp->next)
-{
-printf("%d\t",temp->data);
-}
-}
+   struct node *temp;
+    for(temp=list;temp!=NULL;temp=temp->next)
+     {
+   printf("%d\t",temp->data);
+     }
+  }
 
 struct node *insertbeg(struct node *list,int num)
 {
-struct node * newnode;
-newnode=(struct node *)malloc(sizeof(struct node));
-newnode->data=num;
-newnode->next=list;
-list->prev=newnode;
-list=newnode;
-return list;
+   struct node * newnode;
+   newnode=(struct node *)malloc(sizeof(struct node));
+   newnode->data=num;
+   newnode->next=list;
+   list->prev=newnode;
+   list=newnode;
+   return list;
+}
+
+struct node *insertmid(struct node * list,int num, int pos)
+{
+    struct node *newnode,*temp;
+     int i;
+     newnode=(struct node *)malloc(sizeof(struct node));
+     newnode=data=num;
+     for(i=1;temp=list;i<pos-1&&temp->next!NULL,i++,temp=temp->next);         newnode->next=temp->next;
+     temp->next->prev=newnode;
+     newnode=prev=temp;
+     return list;
+}
+
+struct node *insertend(struct node *list,int num)
+{
+   struct node *temp,*newnode;
+    newnode=(struct node *)malloc(sizeof(struct node));
+    newnode->data=num;
+    for(temp=list;temp->next!=NULL;temp=temp->next);
+    newnode->prev=temp;
+     temp=next->prev;
+     return list;
+}
+
+int main()
+{
+   int ch,num,pos;
+   struct node *list=NULL;
+   do
+    {
+       printf("\n1-create \n2-disp \n3-insertbeg \n4-insertmid \n5-insertend");
+       printf("enter choice");
+       scanf("%d",&n);
+       switch(ch)
+        {
+           case1 :list=create(NULL);
+                   break;
+           case2 :disp(list);
+                    braek;
+           case3 :printf("enter number");
+                  scanf("%d",&num);
+                  list=insertbeg(list,num);
+                     break;
+           case4:printf("enter number");
+                 scanf("%d",&num);
+                 list=insertend(list,num);
+                      break;
+           case5:printf("enter number");
+                 scanf("%d",&num);
+                 printf("enter pos");
+                 scanf("%d",&pos);
+
+                list=insertmid(list,num,pos);
+                      break;
+        }
+}
+while(ch<6);
 }
